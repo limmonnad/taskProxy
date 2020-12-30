@@ -2,10 +2,25 @@ package ru.inordic.myProxy;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
-import static org.junit.jupiter.api.Assertions.*;
+class ProxyFactoryTest {
 
-class  ProxyFactoryTest {
+    static class ResultHolder {
+        private String result;
+        private String result2;
+        public void setResult(String result) {
+            this.result = result;
+        }
+    }
+
+    interface MyInterface {
+        Object extractResult(Object o);
+
+        Object extractResult2(Object o);
+
+        Object extractField2(Object o);
+    }
 
     @Test
     void test() {
@@ -13,30 +28,10 @@ class  ProxyFactoryTest {
         resultHolder.setResult("привет");
         MyInterface myInterface = ProxyFactory.createProxy(MyInterface.class);
         Assertions.assertEquals("привет", myInterface.extractResult(resultHolder));
-    }
 
+        Assertions.assertThrows(Exception.class, () -> myInterface.extractField2(resultHolder));
+
+    }
 }
 
 
-
-
-
-
-//    static class ResultHolder {
-//        private String result;
-//
-//        public void setResult(String result) {
-//            this.result = result;
-//        }
-//    }
-
-//    interface MyExtractor {
-//        Object extractResult(Object o);
-//
-//        Object extractField2(Object o);
-//    }
-
-
-
-
-//        Assertions.assertThrows(Exception.class, () -> myInterface.extractField2(resultHolder));

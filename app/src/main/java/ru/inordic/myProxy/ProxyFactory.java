@@ -1,7 +1,7 @@
 package ru.inordic.myProxy;
 
 import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+//import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 public class ProxyFactory {
@@ -18,21 +18,3 @@ public class ProxyFactory {
     }
 
 }
-
-
-
-
-
-
-
-
-
-//        Method[] declaredMethods = extractorInterface.getDeclaredMethods();
-//        for (Method declaredMethod : declaredMethods) {
-//            String methodName = declaredMethod.getName();
-//            if (methodName.startsWith("extract")){
-//               String nameField = methodName.substring("extract".length());
-//            }
-//
-//            if (declaredMethod.getName().equalsIgnoreCase())
-//        }
